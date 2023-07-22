@@ -1,6 +1,6 @@
 from imglib import *
 
-def getimg(arr, conf=(None, None)):
+def getimg(arr):
     
     line_no = len(arr)
     line_width = 20
@@ -21,21 +21,15 @@ def getimg(arr, conf=(None, None)):
     for i in range(line_no):
         if arr[i] > max:
             max = arr[i]
-    
-    conf1, conf2 = conf
+
 
     for i in range(line_no):
         slice_start += (padding + line_width)*(i>0)
         slice_end = slice_start + line_width + 1
-
+            
         line_height = int((arr[i]/max)*(max_height-padding))            
-        if (i==conf1 or i==conf2):
-            red_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 255
-            green_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 0
-            blue_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 0
-        else:
-            red_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 255
-            green_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 255
-            blue_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 255
+        red_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 255
+        green_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 255
+        blue_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 255
             
     return image

@@ -13,11 +13,13 @@ for i in range(1,30):
 import random
 random.shuffle(arr)
 
+"""
 image = getimg(arr)
 
 plt.imshow(image)
 plt.show()
 
 print(arr)
+"""
 
-#bubble_sort(arr, "exports/")
+bubble_sort(arr, "exports/")
