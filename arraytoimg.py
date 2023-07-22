@@ -1,6 +1,6 @@
 from imglib import *
 
-def getimg(arr):
+def getimg(arr, Red=None):
     
     line_no = len(arr)
     line_width = 20
@@ -26,10 +26,17 @@ def getimg(arr):
     for i in range(line_no):
         slice_start += (padding + line_width)*(i>0)
         slice_end = slice_start + line_width + 1
-            
+        
         line_height = int((arr[i]/max)*(max_height-padding))            
-        red_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 255
-        green_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 255
-        blue_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 255
-            
+        
+        if (i==Red):
+            red_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 255
+            green_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 0
+            blue_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 0
+        else:
+            red_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 255
+            green_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 255
+            blue_channel[max_height-line_height:max_height-padding, slice_start:slice_end] = 255
+        
+
     return image

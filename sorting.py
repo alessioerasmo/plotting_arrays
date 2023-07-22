@@ -1,10 +1,6 @@
 from arraytoimg import *
 import matplotlib.pyplot as plt
 
-def saveimg(array, path, i, conf=None):
-    plt.imsave((path+ str(i) + ".png"), getimg(array))
-    print(i)
-    return i+1
 
 def bubble_sort(arr, path):
     n = len(arr)
@@ -40,14 +36,22 @@ def insertion_sort(arr, path):
         # Sposta gli elementi maggiori di 'key' di una posizione avanti
         # finché non trova la posizione corretta per 'key'
         while j >= 0 and key < arr[j]:
-            img_index = saveimg(arr, path, img_index)
+            temp = arr[j + 1] 
             arr[j + 1] = arr[j]
+            arr[j] = temp 
+            img_index = saveimg(arr, path, img_index)
+
             j -= 1
+            
 
         # Inserisce 'key' nella posizione corretta nell'array ordinato
-        img_index = saveimg(arr, path, img_index)
         arr[j + 1] = key
-
+        img_index = saveimg(arr, path, img_index)
+        
+def saveimg(array, path, i, red=None):
+    plt.imsave((path+ str(i) + ".png"), getimg(array, red))
+    print(i)
+    return i+1
 
 
 # Esempio di utilizzo

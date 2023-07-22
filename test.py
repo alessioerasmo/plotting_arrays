@@ -22,4 +22,4 @@ plt.show()
 print(arr)
 """
 
-bubble_sort(arr, "exports/")
+insertion_sort(arr, "exports/")
