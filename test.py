@@ -22,4 +22,4 @@ plt.show()
 print(arr)
 """
 
-insertion_sort(arr, "exports/")
+heap_sort(arr, "exports/")
